@@ -26,7 +26,7 @@ public class Attribute {
 
     private int sectionId;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "request_id")
     private Request request;
 

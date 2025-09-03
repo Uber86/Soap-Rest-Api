@@ -20,6 +20,7 @@ public class Request {
 
     private String requestIdPortal;
 
+    @Column(name = "request_id_EPGU")
     private String requestIdEPGU;
 
     private String branchIdPortal;
@@ -30,6 +31,7 @@ public class Request {
 
     private String clientTypeId;
 
+    @Column(name = "client_INN")
     private String clientINN;
 
     private String clientPhone;
@@ -46,7 +48,7 @@ public class Request {
 
     private LocalDateTime requestChangeDate;
 
-    @OneToOne(mappedBy = "request", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "request", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Attribute> attributeList;
 
 

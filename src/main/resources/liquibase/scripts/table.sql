@@ -22,8 +22,8 @@ CREATE TABLE requests(
 -- changeset oss:2
 CREATE TABLE attributes(
     id BIGSERIAL PRIMARY KEY,
-    section_number varchar(50),
-    section_id varchar(50),
+    section_number INT,
+    section_id INT,
     request_id BIGINT REFERENCES requests(id)
 );
 
