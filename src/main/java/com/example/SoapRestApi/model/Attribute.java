@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Класс Attribute - хранит все исходные данные, которые требуется для заполнения
+ */
 @Entity
 public class Attribute {
 
@@ -29,12 +32,15 @@ public class Attribute {
     public Attribute() {
     }
 
-    public Attribute(Long id, List<RequestAttribute> requestAttribute, List<FileInfo> fileInfo, int sectionNumber, int sectionId) {
+    public Attribute(Long id, List<RequestAttribute> requestAttribute,
+                     List<FileInfo> fileInfo, int sectionNumber,
+                     int sectionId, Request request) {
         this.id = id;
         this.requestAttribute = requestAttribute;
         this.fileInfo = fileInfo;
         this.sectionNumber = sectionNumber;
         this.sectionId = sectionId;
+        this.request = request;
     }
 
     public Long getId() {
@@ -77,16 +83,24 @@ public class Attribute {
         this.sectionId = sectionId;
     }
 
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Attribute that = (Attribute) o;
-        return sectionNumber == that.sectionNumber && sectionId == that.sectionId && Objects.equals(id, that.id) && Objects.equals(requestAttribute, that.requestAttribute) && Objects.equals(fileInfo, that.fileInfo);
+        Attribute attribute = (Attribute) o;
+        return sectionNumber == attribute.sectionNumber && sectionId == attribute.sectionId && Objects.equals(id, attribute.id) && Objects.equals(requestAttribute, attribute.requestAttribute) && Objects.equals(fileInfo, attribute.fileInfo) && Objects.equals(request, attribute.request);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, requestAttribute, fileInfo, sectionNumber, sectionId);
+        return Objects.hash(id, requestAttribute, fileInfo, sectionNumber, sectionId, request);
     }
 
     @Override
@@ -97,6 +111,7 @@ public class Attribute {
                 ", fileInfo=" + fileInfo +
                 ", sectionNumber=" + sectionNumber +
                 ", sectionId=" + sectionId +
+                ", request=" + request +
                 '}';
     }
 }

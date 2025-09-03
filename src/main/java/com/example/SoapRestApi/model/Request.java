@@ -6,6 +6,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Класс Request, информационный класс содержащий информацию о лице, запрашиваемых
+ * действиях и информацию о подключаемом оборудовании
+ */
 @Entity
 public class Request {
 
@@ -48,7 +52,13 @@ public class Request {
     public Request() {
     }
 
-    public Request(Long id, String requestIdPortal, String requestIdEPGU, String branchIdPortal, LocalDateTime requestCreatedDateTime, String clientIdPortal, String clientTypeId, String clientINN, String clientPhone, String clientEmail, String regionId, String branchId, String requestTypeId, String requestVersion, LocalDateTime requestChangeDate, List<Attribute> attributeList) {
+    public Request(Long id, String requestIdPortal,
+                   String requestIdEPGU, String branchIdPortal,
+                   LocalDateTime requestCreatedDateTime, String clientIdPortal,
+                   String clientTypeId, String clientINN, String clientPhone,
+                   String clientEmail, String regionId, String branchId,
+                   String requestTypeId, String requestVersion,
+                   LocalDateTime requestChangeDate, List<Attribute> attributeList) {
         this.id = id;
         this.requestIdPortal = requestIdPortal;
         this.requestIdEPGU = requestIdEPGU;
@@ -192,6 +202,14 @@ public class Request {
     }
 
     public void setAttributesList(List<Attribute> attributeList) {
+        this.attributeList = attributeList;
+    }
+
+    public List<Attribute> getAttributeList() {
+        return attributeList;
+    }
+
+    public void setAttributeList(List<Attribute> attributeList) {
         this.attributeList = attributeList;
     }
 

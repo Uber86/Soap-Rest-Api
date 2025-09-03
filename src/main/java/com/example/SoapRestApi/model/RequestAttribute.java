@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
+/**
+ * Класс RequestAttribute, информационный класс об оборудовании
+ */
 public class RequestAttribute {
 
     @Id
@@ -21,10 +24,11 @@ public class RequestAttribute {
     public RequestAttribute() {
     }
 
-    public RequestAttribute(Long id, String name, String value) {
+    public RequestAttribute(Long id, String name, String value, Attribute attribute) {
         this.id = id;
         this.name = name;
         this.value = value;
+        this.attribute = attribute;
     }
 
     public Long getId() {
@@ -51,16 +55,24 @@ public class RequestAttribute {
         this.value = value;
     }
 
+    public Attribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         RequestAttribute that = (RequestAttribute) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(value, that.value);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(value, that.value) && Objects.equals(attribute, that.attribute);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, value);
+        return Objects.hash(id, name, value, attribute);
     }
 
     @Override
@@ -69,6 +81,7 @@ public class RequestAttribute {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", value='" + value + '\'' +
+                ", attribute=" + attribute +
                 '}';
     }
 }
