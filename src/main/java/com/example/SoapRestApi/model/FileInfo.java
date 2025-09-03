@@ -1,8 +1,8 @@
 package com.example.SoapRestApi.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Objects;
 
 public class FileInfo {
 
@@ -18,4 +18,81 @@ public class FileInfo {
 
     private String name;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "attributes_id")
+    private Attribute attribute;
+
+    public FileInfo() {
+    }
+
+    public FileInfo(Long id, String content, String contentType, String fileName, String name) {
+        this.id = id;
+        this.content = content;
+        this.contentType = contentType;
+        this.fileName = fileName;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        FileInfo fileInfo = (FileInfo) o;
+        return Objects.equals(id, fileInfo.id) && Objects.equals(content, fileInfo.content) && Objects.equals(contentType, fileInfo.contentType) && Objects.equals(fileName, fileInfo.fileName) && Objects.equals(name, fileInfo.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, content, contentType, fileName, name);
+    }
+
+    @Override
+    public String toString() {
+        return "FileInfo{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", contentType='" + contentType + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
