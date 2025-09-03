@@ -11,6 +11,7 @@ import java.util.Objects;
  * действиях и информацию о подключаемом оборудовании
  */
 @Entity
+@Table(name = "requests")
 public class Request {
 
     @Id

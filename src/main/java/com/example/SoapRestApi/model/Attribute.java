@@ -9,6 +9,7 @@ import java.util.Objects;
  * Класс Attribute - хранит все исходные данные, которые требуется для заполнения
  */
 @Entity
+@Table(name = "attributes")
 public class Attribute {
 
     @Id

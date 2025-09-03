@@ -7,6 +7,8 @@ import java.util.Objects;
 /**
  * Класс RequestAttribute, информационный класс об оборудовании
  */
+@Entity
+@Table(name = "attribute_queries")
 public class RequestAttribute {
 
     @Id
@@ -15,10 +17,11 @@ public class RequestAttribute {
 
     private String name;
 
+    @Column(name = "margin")
     private String value;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "attributes_id")
+    @JoinColumn(name = "attribute_id")
     private Attribute attribute;
 
     public RequestAttribute() {

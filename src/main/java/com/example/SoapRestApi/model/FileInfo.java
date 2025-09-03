@@ -7,6 +7,8 @@ import java.util.Objects;
 /**
  * Класс FileInfo - информация по предоставленному файлу
  */
+@Entity
+@Table(name = "inform_files")
 public class FileInfo {
 
     @Id
